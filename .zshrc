@@ -124,6 +124,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias lg='lazygit'
+alias oldvim="/usr/bin/vim"
+alias vi="nvim"
+alias vim="nvim"
+alias vidiff="nvim -d"
+alias vimdiff="nvim -d"
 
 #binance cli tools
 export PATH=$PATH:/Users/noctishsu/Work/Binance/mono/tools/bin
