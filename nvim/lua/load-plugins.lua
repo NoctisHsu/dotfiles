@@ -46,8 +46,8 @@ return require("packer").startup({
     })
 
     -- tpope
-    use("tpope/vim-fugitive")
-    use("tpope/vim-surround")
+    -- use("tpope/vim-fugitive")
+    -- use("tpope/vim-surround")
 
     -- commenting
     use("JoosepAlviste/nvim-ts-context-commentstring")
@@ -59,7 +59,7 @@ return require("packer").startup({
     -- windwp
     use("windwp/nvim-ts-autotag") -- auto close and rename tags
     use("windwp/nvim-autopairs")
-    use("windwp/nvim-spectre") -- Spectre for find and replace
+    -- use("windwp/nvim-spectre") -- Spectre for find and replace
 
     -- Formatting
     use("mhartington/formatter.nvim")
@@ -78,7 +78,7 @@ return require("packer").startup({
     })
 
     -- Undotree
-    use("mbbill/undotree")
+    --use("mbbill/undotree")
 
     -- file tree
     use({
@@ -130,7 +130,7 @@ return require("packer").startup({
     })
 
     -- firebase rules
-    use("delphinus/vim-firestore")
+    -- use("delphinus/vim-firestore")
 
     -- sessions
     use({
@@ -158,11 +158,11 @@ return require("packer").startup({
     use("goolord/alpha-nvim")
 
     -- Firenvim (vim in browser)
-    use({
-      "glacambre/firenvim",
-      run = function()
-        vim.fn["firenvim#install"](0)
-      end,
-    })
+    --use({
+    --  "glacambre/firenvim",
+    --  run = function()
+    --    vim.fn["firenvim#install"](0)
+    --  end,
+    --})
   end,
 })
