@@ -46,7 +46,7 @@ return require("packer").startup({
     })
 
     -- tpope
-    -- use("tpope/vim-fugitive")
+    use("tpope/vim-fugitive")
     -- use("tpope/vim-surround")
 
     -- commenting
@@ -178,13 +178,5 @@ return require("packer").startup({
         })
       end,
     })
-
-    -- Firenvim (vim in browser)
-    --use({
-    --  "glacambre/firenvim",
-    --  run = function()
-    --    vim.fn["firenvim#install"](0)
-    --  end,
-    --})
   end,
 })
