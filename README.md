@@ -23,11 +23,6 @@ ln -s ~/work/personal/dotfiles/nvim
 details
 ses the latest 0.7+ Neovim
 
-## Clone the repository into ~/.config/nvim 
-```bash
-git clone https://github.com/NoctisHsu/nvim.git ~/.config/nvim
-```
-
 ## Install Packer
 
 [ Packer Neovim plugin manager ](https://github.com/wbthomason/packer.nvim)
