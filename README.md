@@ -17,8 +17,6 @@ ln -s .zshrc ~/.zshrc
 #create symbolic link for nvim configs
 ``` sh
 cd ~/.config
-
-ln -s nvim/ ~/.config/
 ln -s ~/work/personal/dotfiles/nvim
 ```
 
