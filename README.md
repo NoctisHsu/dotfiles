@@ -11,13 +11,12 @@ git clone git@github.com:NoctisHsu/dotfiles.git
 ### sync step
 #create symbolic link for .zshrc configs
 ``` sh
-ln -s .zshrc ~/.zshrc
+cd ~ && ln -s ~/work/personal/dotfiles/.zshrc
 ```
 
 #create symbolic link for nvim configs
 ``` sh
-cd ~/.config
-ln -s ~/work/personal/dotfiles/nvim
+cd ~/.config && ln -s ~/work/personal/dotfiles/nvim
 ```
 
 details
