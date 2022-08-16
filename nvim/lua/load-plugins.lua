@@ -7,16 +7,10 @@ return require("packer").startup({
     -- lsp
     use("neovim/nvim-lspconfig")
 
-    -- lazygit
-    use("kdheepak/lazygit.nvim")
-
     -- Telescope
     use({
       "nvim-telescope/telescope.nvim",
-      requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
-      config = function()
-        require("telescope").load_extension("lazygit")
-      end,
+      requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
     })
 
     -- Treesitter
