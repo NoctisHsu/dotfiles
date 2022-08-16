@@ -18,18 +18,7 @@ telescope.setup({
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "descending",
-    -- layout_strategy = "horizontal",
     layout_strategy = "vertical",
-    -- layout_config = {
-    --   preview_width = 0.6,
-    --   horizontal = {
-    --     mirror = false,
-    --     preview_cutoff = 100,
-    --   },
-    --   vertical = {
-    --     mirror = false,
-    --   },
-    -- },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
     file_ignore_patterns = { ".git/", "node_modules/", "env/" }, -- ignore git
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
@@ -47,6 +36,5 @@ telescope.setup({
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
   },
 })
-
 telescope.load_extension("session-lens")
 telescope.load_extension("projects")

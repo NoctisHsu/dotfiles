@@ -1,3 +1,4 @@
+-- NVIM Plugins configuration
 return require("packer").startup({
   function(use)
     -- Packer can manage itself
@@ -6,10 +7,16 @@ return require("packer").startup({
     -- lsp
     use("neovim/nvim-lspconfig")
 
+    -- lazygit
+    use("kdheepak/lazygit.nvim")
+
     -- Telescope
     use({
       "nvim-telescope/telescope.nvim",
-      requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+      requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+      config = function()
+        require("telescope").load_extension("lazygit")
+      end,
     })
 
     -- Treesitter
@@ -37,6 +44,13 @@ return require("packer").startup({
       },
     })
 
+    use({
+      "stevearc/aerial.nvim",
+      config = function()
+        require("aerial").setup()
+      end,
+    })
+
     -- snippets
     use({
       "L3MON4D3/LuaSnip",
@@ -45,7 +59,7 @@ return require("packer").startup({
       },
     })
 
-    -- tpope
+    -- Git relation features
     use("tpope/vim-fugitive")
     -- use("tpope/vim-surround")
 
@@ -76,9 +90,6 @@ return require("packer").startup({
         require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
       end,
     })
-
-    -- Undotree
-    --use("mbbill/undotree")
 
     -- file tree
     use({
@@ -128,9 +139,6 @@ return require("packer").startup({
       "weilbith/nvim-code-action-menu",
       cmd = "CodeActionMenu",
     })
-
-    -- firebase rules
-    -- use("delphinus/vim-firestore")
 
     -- sessions
     use({
@@ -183,6 +191,17 @@ return require("packer").startup({
       tag = "v2.*",
       config = function()
         require("toggleterm").setup()
+      end,
+    })
+    use({
+      "rcarriga/nvim-notify",
+      config = function()
+        require("notify").setup({
+          stages = "fade_in_slide_out",
+          background_colour = "FloatShadow",
+          timeout = 3000,
+        })
+        vim.notify = require("notify")
       end,
     })
   end,
