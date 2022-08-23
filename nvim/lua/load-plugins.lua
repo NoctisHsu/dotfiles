@@ -187,6 +187,14 @@ return require("packer").startup({
         require("toggleterm").setup()
       end,
     })
+
+    use({
+      "iamcco/markdown-preview.nvim",
+      run = function()
+        vim.fn["mkdp#util#install"]()
+      end,
+    })
+
     use({
       "rcarriga/nvim-notify",
       config = function()
