@@ -20,7 +20,7 @@ telescope.setup({
     sorting_strategy = "descending",
     layout_strategy = "vertical",
     file_sorter = require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = { ".git/", "node_modules/", "env/" }, -- ignore git
+    file_ignore_patterns = { ".git/", "node_modules/", "yarn.lock" }, -- ignore git
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     winblend = 0,
     border = true,
