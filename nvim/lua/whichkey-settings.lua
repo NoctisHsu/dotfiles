@@ -62,6 +62,7 @@ wk.register({
     -- mostly Telescope bindings
     name = "Find with Telescope",
     f = { [[<cmd> lua require"telescope.builtin".find_files({ hidden = true })<CR>]], "Find File" },
+    g = { [[<cmd> lua require"telescope.builtin".live_grep({grep_open_files = true})<CR>]], "Find Live grep" },
     b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
     n = { "<cmd>TodoTelescope<cr>", "Find Notes" },
     t = { "<cmd>Telescope builtin<cr>", "Telescope builtin" },
