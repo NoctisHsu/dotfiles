@@ -1,21 +1,25 @@
 Uses the latest 0.7+ Neovim
 
 ### install
-## Clone the repository into ~/.config/nvim 
 
-``` sh
+## Clone the repository into ~/.config/nvim
+
+```sh
 cd ~/work/personal
 git clone git@github.com:NoctisHsu/dotfiles.git
 ```
 
 ### sync step
+
 #create symbolic link for .zshrc configs
-``` sh
+
+```sh
 cd ~ && ln -s ~/work/personal/dotfiles/.zshrc
 ```
 
 #create symbolic link for nvim configs
-``` sh
+
+```sh
 cd ~/.config && ln -s ~/work/personal/dotfiles/nvim
 ```
 
@@ -174,7 +178,7 @@ One test snippet is included as an example.
     filetype
 29. [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) Buffers
     in tabs
-30. [weilbith/nvim-code-action-menu](https://github.com/ahmedkhalf/weilbith/nvim-code-action-menu) Better code actions
+30. [weilbith/nvim-code-action-menu](https://github.com/weilbith/nvim-code-action-menu) Better code actions
 31. [delphinus/vim-firestore](https://github.com/delphinus/vim-firestore) Syntax
     highlighting and completion for Firebase rules
 32. [rmagatti/auto-session](https://github.com/rmagatti/auto-session) Session
