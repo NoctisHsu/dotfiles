@@ -31,6 +31,7 @@ return require("packer").startup({
       run = ":TSUpdate",
     })
 
+    use("kyazdani42/nvim-web-devicons")
     -- LuaLine
     use({
       "hoob3rt/lualine.nvim",
