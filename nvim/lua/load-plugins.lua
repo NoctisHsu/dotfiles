@@ -177,6 +177,7 @@ return require("packer").startup({
           -- your configuration comes here
           -- or leave it empty to use the default settings
           -- refer to the configuration section below
+          show_hidden = true,
         })
       end,
     })
