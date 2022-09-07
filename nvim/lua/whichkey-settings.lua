@@ -82,7 +82,7 @@ wk.register({
     u = "Undo Changes",
   },
   E = { "<cmd>NvimTreeToggle<CR>", "File Tree" },
-  e = { "<cmd>NvimTreeFocus<CR>", "Focus File Tree" },
+  e = { "<cmd>NvimTreeToggle<CR>", "File Tree" },
   -- trouble bindings
   t = {
     name = "Trouble",
@@ -100,7 +100,7 @@ wk.register({
   w = { "<cmd>WhichKey<CR>", "WhichKey" },
   s = { "<cmd>lua vim.o.spell = not vim.o.spell<cr>", "Toggle spell check" },
   r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-  p = { "<cmd>Telescope projects<CR>", "Telescope Projects" },
+  p = { "<cmd>NvimTreeClose<CR><cmd>Telescope projects<CR>", "Telescope Projects" },
   -- Bufferline
   b = {
     name = "Bufferline",
