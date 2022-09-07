@@ -11,11 +11,11 @@ require("ls.tailwind")
 require("ls.yaml")
 require("ls.prisma")
 require("ls.emmet")
-require("ls.gql")
-require("ls.rust")
-require("ls.go")
+-- require("ls.gql")
+-- require("ls.rust")
+-- require("ls.go")
 -- require("ls.deno")
-require("ls.astro")
+-- require("ls.astro")
 
 -- Customization and appearance -----------------------------------------
 -- change gutter diagnostic symbols
