@@ -53,8 +53,8 @@ local mappings = {
     -- yank to end of line on Y
     { "Y", "y$" },
     -- lsp mappings
-    { "K", vim.lsp.buf.hover },
-    { "<C-k>", vim.lsp.buf.signature_help },
+    -- { "K", vim.lsp.buf.hover },
+    --{ "<C-k>", vim.lsp.buf.signature_help },
     {
       "[d",
       function()
@@ -68,12 +68,19 @@ local mappings = {
       end,
     },
     { "gD", vim.lsp.buf.declaration },
-    { "gd", vim.lsp.buf.definition },
-    { "gr", vim.lsp.buf.references },
+    -- { "gd", vim.lsp.buf.definition },
+    -- { "gr", vim.lsp.buf.references },
     { "gi", vim.lsp.buf.implementation },
     -- bufferline
     { "H", "<cmd>BufferLineCyclePrev<CR>" },
     { "L", "<cmd>BufferLineCycleNext<CR>" },
+    --lspsaga
+    { "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", { noremap = true, silent = true } },
+    { "K", "<Cmd>Lspsaga hover_doc<CR>", { noremap = true, silent = true } },
+    { "gd", "<Cmd>Lspsaga lsp_finder<CR>", { noremap = true, silent = true } },
+    { "<C-k>", "<Cmd>Lspsaga lsp_finder<CR>", { noremap = true, silent = true } },
+    { "gp", "<Cmd>Lspsaga lsp_finder<CR>", { noremap = true, silent = true } },
+    { "gr", "<Cmd>Lspsaga rename<CR>", { noremap = true, silent = true } },
   },
   t = {
     -- Terminal mode

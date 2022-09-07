@@ -7,6 +7,18 @@ return require("packer").startup({
     -- lsp
     use("neovim/nvim-lspconfig")
 
+    use({
+      "glepnir/lspsaga.nvim",
+      branch = "main",
+      config = function()
+        local saga = require("lspsaga")
+
+        saga.init_lsp_saga({
+          -- your configuration
+        })
+      end,
+    })
+
     -- Telescope
     use({
       "nvim-telescope/telescope.nvim",
@@ -181,6 +193,7 @@ return require("packer").startup({
         })
       end,
     })
+
     use({
       "akinsho/toggleterm.nvim",
       tag = "v2.*",
