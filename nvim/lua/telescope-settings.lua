@@ -35,6 +35,13 @@ telescope.setup({
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
   },
+  extensions = {
+    aerial = {
+      -- Display symbols as <root>.<parent>.<symbol>
+      show_nesting = true,
+    },
+  },
 })
 telescope.load_extension("session-lens")
 telescope.load_extension("projects")
+telescope.load_extension("aerial")
