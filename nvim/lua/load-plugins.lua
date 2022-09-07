@@ -37,6 +37,8 @@ return require("packer").startup({
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
 
+    use({ "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" }, run = "./install --bin" })
+
     -- Autocomplete
     use({
       "hrsh7th/nvim-cmp",

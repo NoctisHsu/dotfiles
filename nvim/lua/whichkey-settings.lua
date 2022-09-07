@@ -61,12 +61,19 @@ wk.register({
   f = {
     -- mostly Telescope bindings
     name = "Find with Telescope",
-    f = { [[<cmd> lua require"telescope.builtin".find_files({ hidden = true })<CR>]], "Find File" },
-    g = { [[<cmd> lua require"telescope.builtin".live_grep({grep_open_files = true})<CR>]], "Find Live grep" },
+    f = {
+      [[<cmd>NvimTreeClose<CR><cmd> lua require"telescope.builtin".find_files({ hidden = true })<CR>]],
+      "Find File",
+    },
+    g = {
+      [[<cmd>NvimTreeClose<CR><cmd> lua require"telescope.builtin".live_grep({grep_open_files = true})<CR>]],
+      "Find Live grep",
+    },
     b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
     n = { "<cmd>TodoTelescope<cr>", "Find Notes" },
     t = { "<cmd>Telescope builtin<cr>", "Telescope builtin" },
-    s = { "<cmd>Telescope live_grep<cr>", "Search In Files" },
+    s = { "<cmd>NvimTreeClose<CR><cmd>Telescope live_grep<cr>", "Search In Files" },
+    S = { [[<cmd>NvimTreeClose<CR><cmd> lua require"fzf-lua".live_grep_glob()<CR>]], "Search All Files" },
     c = { "<cmd>Telescope lsp_code_actions<cr>", "Code Actions" },
     r = { "<cmd>Telescope lsp_references<cr>", "Find References" },
     d = { "<cmd>Telescope diagnostics<cr>", "Document Diagnostics" },
