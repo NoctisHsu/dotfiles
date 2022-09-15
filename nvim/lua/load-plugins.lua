@@ -14,7 +14,18 @@ return require("packer").startup({
         local saga = require("lspsaga")
 
         saga.init_lsp_saga({
-          -- your configuration
+          finder_request_timeout = 8000,
+          finder_action_keys = {
+            open = "<CR>",
+            quit = { "q", "<ESC>" },
+          },
+          code_action_keys = {
+            quit = { "q", "<ESC>" },
+          },
+          definition_action_keys = {
+            open = "<CR>",
+            quit = { "q", "<ESC>" },
+          },
         })
       end,
     })
@@ -71,19 +82,16 @@ return require("packer").startup({
 
     -- Git relation features
     use("tpope/vim-fugitive")
-    -- use("tpope/vim-surround")
+    use("tpope/vim-surround")
 
     -- commenting
     use("JoosepAlviste/nvim-ts-context-commentstring")
     use({ "numToStr/Comment.nvim", tag = "v0.6" })
 
-    -- move between kitty windows
-    use("knubie/vim-kitty-navigator")
-
     -- windwp
     use("windwp/nvim-ts-autotag") -- auto close and rename tags
     use("windwp/nvim-autopairs")
-    -- use("windwp/nvim-spectre") -- Spectre for find and replace
+    use("windwp/nvim-spectre") -- Spectre for find and replace
 
     -- Formatting
     use("mhartington/formatter.nvim")
