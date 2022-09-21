@@ -1,4 +1,4 @@
-	#!/bin/bash
+#!/bin/bash
 # Install command-line tools using Homebrew
 
 # Make sure we’re using the latest Homebrew
