@@ -33,6 +33,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias vidiff="nvim -d"
 alias vimdiff="nvim -d"
+alias ls="exa --icons"
 
 export GPG_TTY=$(tty)
 
