@@ -78,6 +78,7 @@ local mappings = {
     { "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", { noremap = true, silent = true } },
     { "K", "<Cmd>Lspsaga hover_doc<CR>", { noremap = true, silent = true } },
     { "gd", "<Cmd>Lspsaga lsp_finder<CR>", { noremap = true, silent = true } },
+    { "gx", "<Cmd>Lspsaga code_action<CR>", { noremap = true, silent = true } },
     { "<C-k>", "<Cmd>Lspsaga signature_help<CR>", { noremap = true, silent = true } },
     { "gp", "<Cmd>Lspsaga preview_definition<CR>", { noremap = true, silent = true } },
     { "gr", "<Cmd>Lspsaga rename<CR>", { noremap = true, silent = true } },
