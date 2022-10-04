@@ -114,7 +114,6 @@ return require("packer").startup({
       "kyazdani42/nvim-tree.lua",
       requires = { "kyazdani42/nvim-web-devicons" },
     })
-
     -- icons in completion
     use("onsails/lspkind-nvim")
 
@@ -153,10 +152,6 @@ return require("packer").startup({
     use({ "akinsho/bufferline.nvim", tag = "*", requires = "kyazdani42/nvim-web-devicons" })
 
     -- better code action menu
-    use({
-      "weilbith/nvim-code-action-menu",
-      cmd = "CodeActionMenu",
-    })
 
     -- sessions
     use({
