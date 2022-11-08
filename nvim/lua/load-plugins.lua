@@ -121,6 +121,11 @@ return require("packer").startup({
     -- Theme
     use("folke/tokyonight.nvim")
 
+    use({
+      "https://gitlab.com/__tpb/monokai-pro.nvim",
+      as = "monokai-pro.nvim",
+    })
+
     -- Trouble
     use({
       "folke/trouble.nvim",
