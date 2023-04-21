@@ -1,6 +1,5 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -47,9 +46,6 @@ source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-
 export ELECTRON_DESKTOP_PATH=/Users/noctishsu/Downloads/electron-desktop-dev
 alias electron=/Users/noctishsu/Downloads/electron-desktop-dev/scripts/electron/electron.sh
 export PYENV_ROOT="$HOME/.pyenv"
@@ -58,3 +54,6 @@ eval "$(pyenv init -)"
 
 export ELECTRON_DESKTOP_PATH=/Users/noctishsu/Work/Binance/electron-desktop
 alias electron=/Users/noctishsu/Work/Binance/electron-desktop/scripts/electron/electron.sh
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

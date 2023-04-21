@@ -13,7 +13,7 @@ return require("packer").startup({
       config = function()
         local saga = require("lspsaga")
 
-        saga.init_lsp_saga({
+        saga.setup({
           finder_request_timeout = 8000,
           finder_action_keys = {
             open = "<CR>",
@@ -49,6 +49,8 @@ return require("packer").startup({
       "hoob3rt/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
+
+    use("lukas-reineke/indent-blankline.nvim")
 
     use({ "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" }, run = "./install --bin" })
 
@@ -160,13 +162,13 @@ return require("packer").startup({
 
     -- sessions
     use({
-      "rmagatti/auto-session",
-      config = function()
-        require("auto-session").setup({
-          log_level = "info",
-          auto_session_suppress_dirs = { "~/", "~/Projects" },
-        })
-      end,
+    "rmagatti/auto-session",
+    config = function()
+    require("auto-session").setup({
+    log_level = "info",
+    auto_session_suppress_dirs = { "~/", "~/Projects" },
+    })
+    end,
     })
 
     use({
