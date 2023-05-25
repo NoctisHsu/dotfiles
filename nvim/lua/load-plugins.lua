@@ -67,6 +67,16 @@ return require("packer").startup({
       },
     })
 
+    -- copilot
+    use { "zbirenbaum/copilot.lua" }
+    use {
+      "zbirenbaum/copilot-cmp",
+      after = { "copilot.lua" },
+      config = function ()
+        require("copilot_cmp").setup()
+      end
+    }
+
     use({
       "stevearc/aerial.nvim",
       config = function()
