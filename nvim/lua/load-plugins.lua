@@ -160,25 +160,6 @@ return require("packer").startup({
 
     -- better code action menu
 
-    -- sessions
-    use({
-    "rmagatti/auto-session",
-    config = function()
-    require("auto-session").setup({
-    log_level = "info",
-    auto_session_suppress_dirs = { "~/", "~/Projects" },
-    })
-    end,
-    })
-
-    use({
-      "rmagatti/session-lens",
-      config = function()
-        require("session-lens").setup({--[[your custom config--]]
-        })
-      end,
-    })
-
     -- Rich presence in Discord
     use("andweeb/presence.nvim")
 
