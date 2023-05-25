@@ -6,29 +6,20 @@ return require("packer").startup({
 
     -- lsp
     use("neovim/nvim-lspconfig")
-
     use({
       "glepnir/lspsaga.nvim",
+      opt = true,
       branch = "main",
+      event = "LspAttach",
       config = function()
-        local saga = require("lspsaga")
-
-        saga.setup({
-          finder_request_timeout = 8000,
-          finder_action_keys = {
-            open = "<CR>",
-            quit = { "q", "<ESC>" },
-          },
-          code_action_keys = {
-            quit = { "q", "<ESC>" },
-          },
-          definition_action_keys = {
-            open = "<CR>",
-            quit = { "q", "<ESC>" },
-          },
-        })
+          require("lspsaga").setup({})
       end,
-    })
+      requires = {
+          {"nvim-tree/nvim-web-devicons"},
+          --Please make sure you install markdown and markdown_inline parser
+          {"nvim-treesitter/nvim-treesitter"}
+      }
+  })
 
     -- Telescope
     use({
