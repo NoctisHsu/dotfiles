@@ -23,6 +23,47 @@ cd ~ && ln -s ~/work/personal/dotfiles/.zshrc
 cd ~/.config && ln -s ~/work/personal/dotfiles/nvim
 ```
 
+#create symbolic link for Claude Code global commands
+
+```sh
+ln -s ~/Work/personal/dotfiles/claude/commands ~/.claude/commands
+```
+
+## Claude Code
+
+Project templates and global commands for [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
+
+### Structure
+
+```
+claude/
+  commands/
+    init-project.md          # /init-project — scaffold config for a new project
+  templates/
+    CLAUDE.md                # Project overview template
+    .claude/
+      settings.json          # Permissions + Stop Hook
+      rules/
+        code-style.md        # Component, styling, TypeScript rules
+        commit-conventions.md # type(scope): message format
+        api-conventions.md   # API layer conventions
+      commands/
+        review.md            # /review — lint + typeCheck + build
+        smart-commit.md      # /smart-commit — analyze + group + commit
+        pr-description.md    # /pr-description — generate PR description
+        spec.md              # /spec — interview + produce spec
+        plan-ticket.md       # /plan-ticket — read specs + plan impl
+```
+
+### Usage
+
+In any project directory, run `/init-project` in Claude Code. It will:
+
+1. Ask about your project (framework, styling, build commands, etc.)
+2. Read templates from `~/Work/personal/dotfiles/claude/templates/`
+3. Generate customized `.claude/` + `CLAUDE.md` in the current project
+4. You then review and further customize for your project
+
 details
 ses the latest 0.7+ Neovim
 
