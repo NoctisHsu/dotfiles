@@ -30,6 +30,8 @@ alias vimdiff="nvim -d"
 alias ls="eza --icons"
 
 export GPG_TTY=$(tty)
+export EDITOR=nvim
+export VISUAL=nvim
 
 fpath=($fpath "$HOME/.zfunctions")
 
