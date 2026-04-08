@@ -1,9 +1,9 @@
 # Theme
-theme = TokyoNight Night
+theme = X Dark
 
 # Transparency + Blur
-background-opacity = 0.82
-background-blur-radius = 24
+background-opacity = 0.75
+background-blur-radius = 32
 
 # Font
 font-size = 14

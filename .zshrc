@@ -1,6 +1,7 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# p10k instant prompt (disabled — using Starship)
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # NVM Configuration (optimized)
 export NVM_DIR="$HOME/.nvm"
@@ -15,7 +16,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_NAMETHEME="powerlevel10k/powerlevel10k"
+# ZSH_NAMETHEME="powerlevel10k/powerlevel10k"
 
 plugins=(git)
 
@@ -35,8 +36,11 @@ export VISUAL=nvim
 
 fpath=($fpath "$HOME/.zfunctions")
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# p10k (disabled — using Starship)
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Starship prompt
+eval "$(starship init zsh)"
 
 # nvm auto-switch (optimized) - begin
 autoload -U add-zsh-hook

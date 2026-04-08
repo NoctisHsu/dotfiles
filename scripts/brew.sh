@@ -16,6 +16,8 @@ brew install killport
 brew install lazygit
 brew install neovim
 brew install nvm
+brew install pastel
+brew install starship
 brew install wget
 
 # Casks
