@@ -2,10 +2,11 @@
 theme = X Dark
 
 # Transparency + Blur
-background-opacity = 0.75
+background-opacity = 0.60
 background-blur-radius = 32
 
 # Font
+font-family = JetBrainsMono Nerd Font
 font-size = 14
 
 # Window
