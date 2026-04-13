@@ -61,3 +61,5 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 # Local overrides (work-specific aliases, paths, env vars)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+# tmuxinator shortcuts
+alias crm="tmuxinator start crm"

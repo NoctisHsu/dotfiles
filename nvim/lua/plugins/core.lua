@@ -10,13 +10,28 @@ return {
         DiagnosticUnnecessary = { fg = "#505050", strikethrough = true },
       },
       tweak_color = {
-        -- Bump grays brighter for better contrast
+        -- Bump grays for better contrast
         gray4 = "#707070",
         gray5 = "#8A8A8A",
         gray6 = "#9A9A9A",
         gray7 = "#B0B0B0",
         gray8 = "#D0D0D0",
         gray9 = "#E7E9EA",
+        -- Richer accent colors (muted, not bright)
+        orange = "#E8976C",
+        yellow = "#D4B56A",
+        green = "#8FB880",
+        blue = "#7BA1C8",
+        red = "#C75D5D",
+      },
+      tweak_syntax = {
+        string = "#8FB880",
+        comment = "#6A6A6A",
+        builtin = "#7BA1C8",
+        type = "#D4B56A",
+        keyword = "#C0A0D0",
+        keyword_return = "#E8976C",
+        keyword_exception = "#C75D5D",
       },
     },
   },
@@ -50,10 +65,24 @@ return {
   },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        markdown = {},
+      },
+    },
+  },
+  {
     "snacks.nvim",
     opts = {
       picker = {
         sources = {
+          files = {
+            exclude = { "node_modules", ".git", "dist", "build", ".next", ".yarn" },
+          },
+          grep = {
+            exclude = { "node_modules", ".git", "dist", "build", ".next", ".yarn" },
+          },
           explorer = {
             hidden = true,
             ignored = false,
@@ -64,9 +93,11 @@ return {
   },
   {
     "keaising/im-select.nvim",
+    event = "VeryLazy",
     opts = {
       default_im_select = "com.apple.keylayout.ABC",
       default_command = "im-select",
+      set_previous_events = {},
     },
   },
   {
