@@ -22,6 +22,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# zsh-autosuggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 alias lg='lazygit'
 alias oldvim="/usr/bin/vim"
 alias vi="nvim"

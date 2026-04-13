@@ -17,3 +17,8 @@ window-decoration = true
 # Misc
 copy-on-select = clipboard
 mouse-hide-while-typing = true
+
+# Cursor shader (switch by commenting/uncommenting)
+custom-shader = ~/.config/ghostty/shaders/cursor_frozen.glsl
+# custom-shader = ~/.config/ghostty/shaders/cursor_smear_fade.glsl
+custom-shader-animation = true

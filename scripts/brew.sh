@@ -17,8 +17,11 @@ brew install lazygit
 brew install neovim
 brew install nvm
 brew install pastel
+brew install glow
 brew install starship
+brew install tmux
 brew install wget
+brew install zsh-autosuggestions
 
 # Casks
 brew install --cask claude-code
