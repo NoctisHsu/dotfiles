@@ -63,3 +63,6 @@ export PATH="$HOME/.local/bin:$PATH"
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 # tmuxinator shortcuts
 alias crm="tmuxinator start crm"
+
+# Markdown preview in terminal (glow)
+md() { glow -p "${1:-.}"; }
