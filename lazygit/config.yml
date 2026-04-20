@@ -1,0 +1,27 @@
+gui:
+  theme:
+    # Match X Dark terminal theme — black bg, muted accents
+    activeBorderColor:
+      - "#7BA1C8"         # blue from palette[4]
+      - bold
+    inactiveBorderColor:
+      - "#444444"         # bright black from palette[8]
+    optionsTextColor:
+      - "#7BA1C8"
+    selectedLineBgColor:
+      - "#1a1a2e"         # very subtle navy tint — won't clash with diff
+    selectedRangeBgColor:
+      - "#1a1a2e"
+    cherryPickedCommitBgColor:
+      - "#1e2a1e"         # subtle dark green
+    cherryPickedCommitFgColor:
+      - "#A3CC96"         # green from palette[2]
+    markedBaseCommitBgColor:
+      - "#2a1e1e"
+    markedBaseCommitFgColor:
+      - "#C75D5D"         # red from palette[1]
+    unstagedChangesColor:
+      - "#C75D5D"
+    defaultFgColor:
+      - "#DDDDDD"         # foreground from X Dark
+  nerdFontsVersion: "3"
