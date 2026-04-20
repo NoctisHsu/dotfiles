@@ -9,6 +9,8 @@ background-blur-radius = 32
 font-family = JetBrainsMono Nerd Font
 font-family-cjk = Sarasa Mono TC
 font-size = 14
+font-thicken = true
+freetype-load-flags = no-force-autohint
 
 # Window
 window-padding-x = 8
