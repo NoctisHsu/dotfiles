@@ -7,7 +7,7 @@ background-blur-radius = 32
 
 # Font
 font-family = JetBrainsMono Nerd Font
-font-family-cjk = PingFang TC
+font-family = PingFang TC
 font-size = 14
 font-thicken = true
 freetype-load-flags = no-force-autohint
