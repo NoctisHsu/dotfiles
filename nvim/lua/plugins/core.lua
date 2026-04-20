@@ -20,12 +20,12 @@ return {
         -- Richer accent colors (muted, not bright)
         orange = "#E8976C",
         yellow = "#D4B56A",
-        green = "#8FB880",
+        green = "#A3CC96",
         blue = "#7BA1C8",
         red = "#C75D5D",
       },
       tweak_syntax = {
-        string = "#8FB880",
+        string = "#A3CC96",
         comment = "#6A6A6A",
         builtin = "#7BA1C8",
         type = "#D4B56A",
