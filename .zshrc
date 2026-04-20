@@ -65,4 +65,8 @@ export PATH="$HOME/.local/bin:$PATH"
 alias crm="tmuxinator start crm"
 
 # Markdown preview in terminal (glow)
-md() { glow -p "${1:-.}"; }
+unalias md 2>/dev/null
+function md { glow -p "${1:-.}"; }
+
+# Glow custom style matching Ghostty X Dark theme
+alias glow="glow -s ~/.config/glow/xdark.json"
