@@ -7,6 +7,7 @@ background-blur-radius = 32
 
 # Font
 font-family = JetBrainsMono Nerd Font
+font-family-cjk = Sarasa Mono TC
 font-size = 14
 
 # Window
@@ -15,6 +16,8 @@ window-padding-y = 4
 window-decoration = true
 
 # Misc
+cursor-style = bar
+cursor-style-blink = false
 copy-on-select = clipboard
 mouse-hide-while-typing = true
 

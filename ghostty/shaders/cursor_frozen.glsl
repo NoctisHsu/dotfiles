@@ -7,17 +7,17 @@ float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b)
 float seg(in vec2 p, in vec2 a, in vec2 b, inout float s, float d) {
     vec2 e = b - a;
     vec2 w = p - a;
-    vec2 proj = a + e * clamp(dot(w, e) / dot(e, e), 0.0, 1.0);
-    float segd = dot(p - proj, p - proj);
-    d = min(d, segd);
+    float ee = dot(e, e);
+    vec2 proj = a + e * clamp(dot(w, e) / ee, 0.0, 1.0);
+    vec2 diff = p - proj;
+    d = min(d, dot(diff, diff));
 
-    float c0 = step(0.0, p.y - a.y);
+    float c0 = step(0.0, w.y);
     float c1 = 1.0 - step(0.0, p.y - b.y);
     float c2 = 1.0 - step(0.0, e.x * w.y - e.y * w.x);
     float allCond = c0 * c1 * c2;
     float noneCond = (1.0 - c0) * (1.0 - c1) * (1.0 - c2);
-    float flip = mix(1.0, -1.0, step(0.5, allCond + noneCond));
-    s *= flip;
+    s *= mix(1.0, -1.0, step(0.5, allCond + noneCond));
     return d;
 }
 
@@ -33,72 +33,66 @@ float getSdfParallelogram(in vec2 p, in vec2 v0, in vec2 v1, in vec2 v2, in vec2
     return s * sqrt(d);
 }
 
-vec2 norm(vec2 value, float isPosition) {
-    return (value * 2.0 - (iResolution.xy * isPosition)) / iResolution.y;
-}
-
-float antialising(float distance) {
-    return 1. - smoothstep(0., norm(vec2(2., 2.), 0.).x, distance);
-}
-
 float determineStartVertexFactor(vec2 c, vec2 p) {
     float condition1 = step(p.x, c.x) * step(c.y, p.y);
     float condition2 = step(c.x, p.x) * step(p.y, c.y);
     return 1.0 - max(condition1, condition2);
 }
 
-float determineStartVertexFactor2(vec2 c, vec2 p) {
-    float condition1 = step(p.x, c.x) * step(c.y, p.y);
-    float condition2 = step(c.x, p.x) * step(p.y, c.y);
-    return 1.0 - max(condition1, condition2);
-}
-
-vec2 getRectangleCenter(vec4 rectangle) {
-    return vec2(rectangle.x + (rectangle.z / 2.), rectangle.y - (rectangle.w / 2.));
-}
-
-float ease(float x) {
-    return pow(1.0 - x, 3.0);
-}
-
-const vec4 TRAIL_COLOR = vec4(.502, 0.98, 1., 1.0);
-const vec4 TRAIL_COLOR_ACCENT = vec4(.0, 0., 1., 1.0);
+const vec4 TRAIL_COLOR = vec4(0.82, 0.84, 0.88, 1.0);
+const vec4 TRAIL_COLOR_ACCENT = vec4(0.62, 0.64, 0.68, 1.0);
 const float DURATION = 0.3;
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {
-    fragColor = texture(iChannel0, fragCoord.xy / iResolution.xy);
-    vec2 vu = norm(fragCoord, 1.);
-    vec2 offsetFactor = vec2(-.5, 0.5);
+    vec2 uv = fragCoord.xy / iResolution.xy;
+    fragColor = texture(iChannel0, uv);
 
-    vec4 currentCursor = vec4(norm(iCurrentCursor.xy, 1.), norm(iCurrentCursor.zw, 0.));
-    vec4 previousCursor = vec4(norm(iPreviousCursor.xy, 1.), norm(iPreviousCursor.zw, 0.));
+    // Early exit: animation finished, no work needed
+    float progress = clamp((iTime - iTimeCursorChange) / DURATION, 0.0, 1.0);
+    if (progress >= 1.0) return;
 
-    vec2 centerCC = getRectangleCenter(currentCursor);
-    vec2 centerCP = getRectangleCenter(previousCursor);
+    float scale = 2.0 / iResolution.y;
+    vec2 normOffset = iResolution.xy / iResolution.y;
+
+    vec2 vu = fragCoord * scale - normOffset;
+
+    vec2 curPos = iCurrentCursor.xy * scale - normOffset;
+    vec2 curSize = iCurrentCursor.zw * scale;
+    vec2 prevPos = iPreviousCursor.xy * scale - normOffset;
+    vec2 prevSize = iPreviousCursor.zw * scale;
+
+    // Spatial early exit: skip pixels far from cursor and trail
+    vec2 bboxMin = min(curPos - curSize, prevPos - prevSize) - vec2(0.02);
+    vec2 bboxMax = max(curPos + curSize, prevPos + prevSize) + vec2(0.02);
+    if (vu.x < bboxMin.x || vu.x > bboxMax.x || vu.y < bboxMin.y || vu.y > bboxMax.y) return;
+
+    vec2 offsetFactor = vec2(-0.5, 0.5);
+    vec4 currentCursor = vec4(curPos, curSize);
+    vec4 previousCursor = vec4(prevPos, prevSize);
+
+    vec2 centerCC = curPos + vec2(curSize.x * 0.5, -curSize.y * 0.5);
+    vec2 centerCP = prevPos + vec2(prevSize.x * 0.5, -prevSize.y * 0.5);
+
     float vertexFactor = determineStartVertexFactor(currentCursor.xy, previousCursor.xy);
     float invertedVertexFactor = 1.0 - vertexFactor;
 
-    vec2 v0 = vec2(currentCursor.x + currentCursor.z * vertexFactor, currentCursor.y - currentCursor.w);
-    vec2 v1 = vec2(currentCursor.x + currentCursor.z * invertedVertexFactor, currentCursor.y);
-    vec2 v2 = vec2(previousCursor.x + currentCursor.z * invertedVertexFactor, previousCursor.y);
-    vec2 v3 = vec2(previousCursor.x + currentCursor.z * vertexFactor, previousCursor.y - previousCursor.w);
+    vec2 v0 = vec2(curPos.x + curSize.x * vertexFactor, curPos.y - curSize.y);
+    vec2 v1 = vec2(curPos.x + curSize.x * invertedVertexFactor, curPos.y);
+    vec2 v2 = vec2(prevPos.x + curSize.x * invertedVertexFactor, prevPos.y);
+    vec2 v3 = vec2(prevPos.x + curSize.x * vertexFactor, prevPos.y - prevSize.y);
 
-    float sdfCurrentCursor = getSdfRectangle(vu, currentCursor.xy - (currentCursor.zw * offsetFactor), currentCursor.zw * 0.5);
+    float sdfCurrentCursor = getSdfRectangle(vu, curPos - (curSize * offsetFactor), curSize * 0.5);
     float sdfTrail = getSdfParallelogram(vu, v0, v1, v2, v3);
 
-    float progress = clamp((iTime - iTimeCursorChange) / DURATION, 0.0, 1.0);
-    float easedProgress = ease(progress);
+    float easedProgress = pow(1.0 - progress, 3.0);
     float lineLength = distance(centerCC, centerCP);
 
-    vec4 newColor = vec4(fragColor);
-    float fadeFactor = 1.0 - smoothstep(lineLength, sdfCurrentCursor, easedProgress * lineLength);
-
-    float mod = .007;
-    vec4 trail = mix(TRAIL_COLOR_ACCENT, fragColor, 1. - smoothstep(0., sdfTrail + mod, 0.007));
-    trail = mix(TRAIL_COLOR, trail, 1. - smoothstep(0., sdfTrail + mod, 0.006));
+    float mod = .003;
+    vec4 trail = mix(TRAIL_COLOR_ACCENT, fragColor, 1. - smoothstep(0., sdfTrail + mod, 0.003));
+    trail = mix(TRAIL_COLOR, trail, 1. - smoothstep(0., sdfTrail + mod, 0.002));
     trail = mix(trail, TRAIL_COLOR, step(sdfTrail + mod, 0.));
-    trail = mix(TRAIL_COLOR_ACCENT, trail, 1. - smoothstep(0., sdfCurrentCursor + .002, 0.004));
-    trail = mix(TRAIL_COLOR, trail, 1. - smoothstep(0., sdfCurrentCursor + .002, 0.004));
+    trail = mix(TRAIL_COLOR_ACCENT, trail, 1. - smoothstep(0., sdfCurrentCursor + .001, 0.002));
+    trail = mix(TRAIL_COLOR, trail, 1. - smoothstep(0., sdfCurrentCursor + .001, 0.002));
     fragColor = mix(trail, fragColor, 1. - smoothstep(0., sdfCurrentCursor, easedProgress * lineLength));
 }
