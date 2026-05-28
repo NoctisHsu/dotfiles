@@ -70,3 +70,6 @@ function md { glow -p "${1:-.}"; }
 
 # Glow custom style matching Ghostty X Dark theme
 alias glow="glow -s ~/.config/glow/xdark.json"
+
+# cheat.sh — quick reference (e.g. `ch tmux`, `ch tmux split+window`)
+alias ch='cht.sh'
