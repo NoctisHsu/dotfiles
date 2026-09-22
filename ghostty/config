@@ -3,7 +3,7 @@ theme = X Dark
 
 # Transparency + Blur
 background-opacity = 0.60
-background-blur-radius = 32
+background-blur-radius = 16
 
 # Font
 font-family = JetBrainsMono Nerd Font
@@ -23,7 +23,10 @@ cursor-style-blink = false
 copy-on-select = clipboard
 mouse-hide-while-typing = true
 
-# Cursor shader (switch by commenting/uncommenting)
-custom-shader = ~/.config/ghostty/shaders/cursor_frozen.glsl
+# Cursor shader (disabled — was causing typing/cursor lag)
+# custom-shader = ~/.config/ghostty/shaders/cursor_frozen.glsl
 # custom-shader = ~/.config/ghostty/shaders/cursor_smear_fade.glsl
-custom-shader-animation = true
+custom-shader-animation = false
+
+# tab title 由 zsh 控制（跟著 git project）
+shell-integration-features = no-title
