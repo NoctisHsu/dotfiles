@@ -73,3 +73,12 @@ alias glow="glow -s ~/.config/glow/xdark.json"
 
 # cheat.sh — quick reference (e.g. `ch tmux`, `ch tmux split+window`)
 alias ch='cht.sh'
+
+# Ghostty: tab title 跟著 git project（cd 到哪個 repo 就顯示哪個；worktree 顯示 worktree 名）
+_ghostty_tabname() {
+  local name
+  name=$(git rev-parse --show-toplevel 2>/dev/null) && name=${name:t} || name=${PWD:t}
+  printf '\033]2;%s\007' "$name"
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _ghostty_tabname
