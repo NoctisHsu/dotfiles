@@ -25,3 +25,9 @@ gui:
     defaultFgColor:
       - "#DDDDDD"         # foreground from X Dark
   nerdFontsVersion: "3"
+refresher:
+  # mono 的 `git status --untracked-files=all` 一次 4～6 秒；預設每 10 秒刷新會讓多個 lazygit pane 持續吃 CPU
+  refreshInterval: 60
+git:
+  # 預設每 60 秒 git fetch --all；每個 herdr workspace 都開一個 lazygit，改成手動 fetch
+  autoFetch: false
